@@ -98,6 +98,12 @@ The following configuration properties are available:
     principal. Configuring multiple values is useful when the coordinator trusts
     JWTs from issuers that disagree on which claim carries the subject — for
     example, `preferred_username,email`.
+* - `http-server.authentication.jwt.groups-field`
+  - Name of a JWT claim whose value is added to the user's groups. The claim
+    can be a string or a list of strings; other values are ignored. Not set by
+    default. The groups are combined with those from the configured
+    [group provider](/develop/group-provider) and can be used, for example, in
+    access control rules and resource group selectors.
 * - `http-server.authentication.jwt.user-mapping.pattern`
   - A regular expression pattern to [map all user names](/security/user-mapping)
     for this authentication system to the format expected by the Trino server.

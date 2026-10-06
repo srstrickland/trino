@@ -36,6 +36,7 @@ public class TestJwtAuthenticatorConfig
                 .setRequiredAudience(null)
                 .setRequiredIssuer(null)
                 .setPrincipalFields(ImmutableList.of("sub"))
+                .setGroupsField(null)
                 .setUserMappingPattern(null)
                 .setUserMappingFile(null));
     }
@@ -52,6 +53,7 @@ public class TestJwtAuthenticatorConfig
                 .put("http-server.authentication.jwt.required-audience", "some-audience")
                 .put("http-server.authentication.jwt.required-issuer", "some-issuer")
                 .put("http-server.authentication.jwt.principal-field", "some-field-1,some-field-2")
+                .put("http-server.authentication.jwt.groups-field", "some-groups-field")
                 .put("http-server.authentication.jwt.user-mapping.pattern", "(.*)@something")
                 .put("http-server.authentication.jwt.user-mapping.file", userMappingFile.toString())
                 .buildOrThrow();
@@ -61,6 +63,7 @@ public class TestJwtAuthenticatorConfig
                 .setRequiredAudience("some-audience")
                 .setRequiredIssuer("some-issuer")
                 .setPrincipalFields(ImmutableList.of("some-field-1", "some-field-2"))
+                .setGroupsField("some-groups-field")
                 .setUserMappingPattern("(.*)@something")
                 .setUserMappingFile(userMappingFile.toFile());
 

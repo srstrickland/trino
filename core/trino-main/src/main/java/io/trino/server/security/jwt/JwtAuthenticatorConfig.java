@@ -31,6 +31,7 @@ public class JwtAuthenticatorConfig
     private String requiredIssuer;
     private String requiredAudience;
     private List<String> principalFields = ImmutableList.of("sub");
+    private Optional<String> groupsField = Optional.empty();
     private Optional<String> userMappingPattern = Optional.empty();
     private Optional<File> userMappingFile = Optional.empty();
 
@@ -86,6 +87,19 @@ public class JwtAuthenticatorConfig
     public JwtAuthenticatorConfig setPrincipalFields(List<String> principalFields)
     {
         this.principalFields = ImmutableList.copyOf(principalFields);
+        return this;
+    }
+
+    public Optional<String> getGroupsField()
+    {
+        return groupsField;
+    }
+
+    @Config("http-server.authentication.jwt.groups-field")
+    @ConfigDescription("JWT claim whose value, a string or a list of strings, is added to the user's groups")
+    public JwtAuthenticatorConfig setGroupsField(String groupsField)
+    {
+        this.groupsField = Optional.ofNullable(groupsField);
         return this;
     }
 
